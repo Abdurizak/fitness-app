@@ -12,6 +12,7 @@ const FitnessPage = () => {
     armor: '',
     avatar_url: ''
   });
+  const [editingBot, setEditingBot] = useState(null); // State to track which bot is being edited
 
   // Fetch data from db.json
   useEffect(() => {
@@ -34,7 +35,7 @@ const FitnessPage = () => {
     });
   };
 
-  // Handle input changes for new bot
+  // Handle input changes for new or editing bot
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewBot((prev) => ({
@@ -65,6 +66,40 @@ const FitnessPage = () => {
     });
   };
 
+  // Function to handle editing a fitness routine
+  const handleEdit = (bot) => {
+    setEditingBot(bot); // Set the bot to be edited
+    setNewBot({
+      name: bot.name,
+      bot_class: bot.bot_class,
+      health: bot.health,
+      damage: bot.damage,
+      armor: bot.armor,
+      avatar_url: bot.avatar_url
+    });
+  };
+
+  // Function to handle saving the edited fitness routine
+  const saveEditedBot = (e) => {
+    e.preventDefault();
+    setFitnessData((prevData) =>
+      prevData.map((bot) =>
+        bot.id === editingBot.id ? { ...bot, ...newBot } : bot
+      )
+    );
+
+    // Clear form after saving
+    setNewBot({
+      name: '',
+      bot_class: '',
+      health: '',
+      damage: '',
+      armor: '',
+      avatar_url: ''
+    });
+    setEditingBot(null); // Reset editing state
+  };
+
   // Function to handle deleting a fitness routine
   const deleteFitnessRoutine = (botId) => {
     setFitnessData((prevData) => prevData.filter((bot) => bot.id !== botId));
@@ -74,9 +109,9 @@ const FitnessPage = () => {
     <div>
       <h1>Fitness Bots</h1>
 
-      {/* Form to add a new fitness routine */}
-      <form onSubmit={addNewBot} className="add-bot-form">
-        <h2>Add New Fitness Routine</h2>
+      {/* Form to add or edit a fitness routine */}
+      <form onSubmit={editingBot ? saveEditedBot : addNewBot} className="add-bot-form">
+        <h2>{editingBot ? 'Edit Fitness Routine' : 'Add New Fitness Routine'}</h2>
         <input
           type="text"
           name="name"
@@ -125,7 +160,7 @@ const FitnessPage = () => {
           onChange={handleInputChange}
           required
         />
-        <button type="submit">Add Fitness Routine</button>
+        <button type="submit">{editingBot ? 'Save Changes' : 'Add Fitness Routine'}</button>
       </form>
 
       <div className="fitness-list">
@@ -139,14 +174,20 @@ const FitnessPage = () => {
               <p><strong>Health:</strong> {bot.health}</p>
               <p><strong>Damage:</strong> {bot.damage}</p>
               <p><strong>Armor:</strong> {bot.armor}</p>
-              <button 
+              <button
                 className={`favorite-btn ${isFavorite ? 'favorited' : ''}`}
                 onClick={() => toggleFavorite(bot.id)}
               >
                 {isFavorite ? 'Remove from Favorites' : 'Save as Favorite'}
               </button>
               <button 
-                className="delete-btn" 
+                className="edit-btn"
+                onClick={() => handleEdit(bot)}
+              >
+                Edit
+              </button>
+              <button 
+                className="delete-btn"
                 onClick={() => deleteFitnessRoutine(bot.id)}
               >
                 Delete

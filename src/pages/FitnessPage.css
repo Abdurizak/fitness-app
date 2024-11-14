@@ -108,3 +108,9 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
+.edit-btn {
+  background-color: #007bff;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 5px;
+}
