@@ -1,7 +1,6 @@
 import React from 'react';
 
 const AboutPage = () => {
-  // Updated inline styles for the component
   const styles = {
     aboutPage: {
       padding: '40px',
@@ -14,21 +13,21 @@ const AboutPage = () => {
       minHeight: '100vh',
     },
     overlay: {
-      content: '""',
       position: 'absolute',
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      background: 'rgba(0, 0, 0, 0.6)', // Darker overlay for better contrast
+      background: 'rgba(0, 0, 0, 0.6)',
       zIndex: 1,
     },
     content: {
       position: 'relative',
       zIndex: 2,
+      padding: '20px',
     },
     header: {
-      background: 'rgba(0, 0, 0, 0.7)', // Darker background for the header
+      background: 'rgba(0, 0, 0, 0.7)',
       color: '#fff',
       padding: '20px',
       borderRadius: '10px',
@@ -37,19 +36,20 @@ const AboutPage = () => {
     headerTitle: {
       fontSize: '2.5em',
       margin: 0,
-      color: '#ff9800', // Distinctive color for the header title
+      color: '#ff9800',
     },
     headerSubtitle: {
       fontSize: '1.2em',
       marginTop: '10px',
+      color: '#f0f0f0',
     },
     section: {
-      background: 'rgba(0, 0, 0, 0.7)', // Darker section background
+      background: 'rgba(0, 0, 0, 0.7)',
       padding: '20px',
       borderRadius: '10px',
       marginBottom: '20px',
-      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-      color: '#f0f0f0', // Light color for readability
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+      color: '#f0f0f0',
     },
     sectionTitle: {
       color: '#ff9800',
@@ -59,6 +59,7 @@ const AboutPage = () => {
     paragraph: {
       fontSize: '1.1em',
       lineHeight: '1.6',
+      margin: '0 0 15px 0',
     },
     valuesList: {
       listStyleType: 'none',
@@ -76,8 +77,10 @@ const AboutPage = () => {
       color: '#ff9800',
       textDecoration: 'none',
       fontWeight: 'bold',
+      transition: 'color 0.3s',
     },
     contactLinkHover: {
+      color: '#ffa726',
       textDecoration: 'underline',
     },
   };
@@ -131,7 +134,14 @@ const AboutPage = () => {
           <h2 style={styles.sectionTitle}>Contact Us</h2>
           <p style={styles.paragraph}>
             If you have any questions, suggestions, or feedback, do not hesitate to reach out through our{' '}
-            <a href="/contact" style={styles.contactLink}>Contact Page</a>. We are here to help you on your journey!
+            <a
+              href="/contact"
+              style={styles.contactLink}
+              onMouseEnter={(e) => (e.currentTarget.style = { ...styles.contactLink, ...styles.contactLinkHover })}
+              onMouseLeave={(e) => (e.currentTarget.style = styles.contactLink)}
+            >
+              Contact Page
+            </a>. We are here to help you on your journey!
           </p>
         </section>
       </div>
