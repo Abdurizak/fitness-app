@@ -101,15 +101,6 @@
     },
     {
       "id": 12,
-      "name": "Barre",
-      "health": 74,
-      "damage": 37,
-      "armor": 91,
-      "bot_class": "Defender",
-      "avatar_url": "https://plus.unsplash.com/premium_photo-1689884406248-1cf6d33cf671?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmFycmV8ZW58MHx8MHx8fDA%3D"
-    },
-    {
-      "id": 13,
       "name": "Spin Class",
       "health": 56,
       "damage": 92,
