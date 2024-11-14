@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Column 1: Links or App Info */}
           <div className="col-md-4 mb-3">
             <h5>FITFORMULA</h5>
-            <p>Empowering you to live a healthier life.</p>
+            <p>Helping you thrive every day through health and wellness.</p>
           </div>
 
           {/* Column 2: Useful Links */}
@@ -24,7 +24,7 @@ const Footer = () => {
                 <Link className="text-white" to="/fitness">Fitness Plans</Link>
               </li>
               <li className="me-3">
-                <Link className="text-white" to="/contact">Contact</Link>
+                <Link className="text-white" to="/contact">Contact Us</Link>
               </li>
             </ul>
           </div>

@@ -28,7 +28,7 @@ const FitnessPage = () => {
 
   return (
     <div>
-      <h1>Fitness Bots</h1>
+      <h1>Fitness Helpers</h1>
       <div className="fitness-list">
         {fitnessData.map((bot) => {
           const isFavorite = favorites.includes(bot.id); // Check if the bot is a favorite
