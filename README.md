@@ -73,22 +73,6 @@ Copy code
 npm start
 This will start the React app on http://localhost:3001.
 
-Folder Structure
-java
-Copy code
-fitness-app/
-├── public/
-│   └── index.html
-├── src/
-│   ├── components/
-│   ├── pages/
-│   │   └── FitnessPage.js
-│   ├── App.js
-│   ├── index.js
-│   └── FitnessPage.css
-├── db.json
-├── package.json
-└── README.md
 
 ## Usage
 View Fitness Routines: After starting the app, you can see a list of fitness routines fetched from http://localhost:3000/fitness.
