@@ -16,7 +16,7 @@ const FitnessPage = () => {
 
   // Fetch data from db.json
   useEffect(() => {
-    fetch('http://localhost:3000/fitness')
+    fetch('https://fitness-app-vdmr.onrender.com/fitness')
       .then((response) => response.json())
       .then((data) => setFitnessData(data))
       .catch((error) => console.error('Error fetching data:', error));
