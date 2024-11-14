@@ -15,9 +15,12 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/fitness">Fitness</Link>
             </li>
+<<<<<<<<< Temporary merge branch 1
+=========
             <li className="nav-item">
-              <Link className="nav-link" to="/contact">Contact</Link>
+              <Link className="nav-link" to="/contact">Contact</Link>  {/* Link to Contact Page */}
             </li>
+>>>>>>>>> Temporary merge branch 2
           </ul>
         </div>
       </div>
