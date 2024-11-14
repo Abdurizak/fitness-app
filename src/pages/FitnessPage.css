@@ -1,69 +1,110 @@
-/* Basic layout and card styling */
+
 .fitness-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-around;
-  }
-  
-  .fitness-card {
-    width: 300px;
-    padding: 20px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-  
-  .fitness-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  
-  .fitness-card.favorite {
-    border-color: #ff6f61;
-  }
-  
-  .fitness-card h2 {
-    margin-top: 10px;
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .fitness-card p {
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  .favorite-btn {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .favorite-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .favorite-btn.favorited {
-    background-color: #ff6f61;
-  }
-  
-  .favorite-btn.favorited:hover {
-    background-color: #ff3b2f;
-  }
-  
-  .favorite-btn:focus {
-    outline: none;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+}
+
+.fitness-card {
+  width: 300px;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.fitness-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.fitness-card.favorite {
+  border-color: #ff6f61;
+}
+
+.fitness-card h2 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.fitness-card p {
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Buttons */
+.favorite-btn {
+  margin-top: 15px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.favorite-btn:hover {
+  background-color: #0056b3;
+}
+
+.favorite-btn.favorited {
+  background-color: #2c478b;
+}
+
+.favorite-btn.favorited:hover {
+  background-color: #4245d4;
+}
+
+.favorite-btn:focus {
+  outline: none;
+}
+
+/* Add new bot form */
+.add-bot-form {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+}
+
+.add-bot-form input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.add-bot-form button {
+  padding: 10px 20px;
+  background-color: #1455a0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.add-bot-form button:hover {
+  background-color: #27a2b3;
+}
+
+/* Delete button styling */
+.delete-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
