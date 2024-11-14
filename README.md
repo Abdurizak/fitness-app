@@ -13,6 +13,7 @@ React: The main library for building the app's user interface.
 React Hooks (useState, useEffect): For managing the app state and side effects.
 JSON Server: A mock backend server used to serve data locally via db.json.
 CSS: For styling the app.
+JavaScript: JavaScript can be used to create interactive elements, such as menus and form validation, and to improve the user experience with animations and visual feedback. It can also be used to update content and manage client-side interactions in web browsers. 
 
 ## Getting Started
 Prerequisites
