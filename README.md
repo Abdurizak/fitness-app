@@ -85,7 +85,7 @@ Favorite Routine: Click on the "Save as Favorite" button to mark a routine as a 
 ## Contributing
 We welcome contributions to this project! To contribute:
 
-## Fork the repository.
+Fork the repository.
 Clone your forked repository to your local machine.
 Create a new branch for your changes.
 Make your changes.
