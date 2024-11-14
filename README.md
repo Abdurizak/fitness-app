@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+## Fitness App
+A fitness app built with React, allowing users to manage a collection of fitness routines for "fitness bots." Users can add, update, delete, and favorite routines. The app fetches and stores data from a local JSON server (via db.json), making it a simple and lightweight fitness management solution.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+View Fitness Routines: See a list of all available fitness routines.
+Add New Fitness Routine: Add new fitness routines with attributes like name, class, health, damage, armor, and avatar URL.
+Edit Fitness Routine: Edit an existing fitness routine by updating its details.
+Delete Fitness Routine: Remove any fitness routine from the list.
+Favorite Fitness Routines: Mark and unmark fitness routines as favorites for quick access.
 
-##  Scripts
+## Technologies Used
+React: The main library for building the app's user interface.
+React Hooks (useState, useEffect): For managing the app state and side effects.
+JSON Server: A mock backend server used to serve data locally via db.json.
+CSS: For styling the app.
 
-In the project directory, you can run:
+## Getting Started
+Prerequisites
+Node.js (preferably the latest LTS version)
+npm (Node Package Manager) or yarn
+Installation
+Clone the repository to your local machine:
 
-### `npm start`
+bash
+Copy code
+git clone https://github.com/Abdurizak/fitness-app.git
+cd fitness-app
+Install dependencies:
 
-Runs the app in the development modes.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+bash
+Copy code
+npm install
+Install and run json-server for mock backend:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+In the root of the project, create a db.json file (if not already created) to mock the API data.
+Example db.json:
 
-### `npm test`
+json
+Copy code
+{
+  "fitness": [
+    {
+      "id": 1,
+      "name": "PowerBot",
+      "bot_class": "Warrior",
+      "health": 150,
+      "damage": 50,
+      "armor": 30,
+      "avatar_url": "https://example.com/avatar1.png"
+    },
+    {
+      "id": 2,
+      "name": "SpeedBot",
+      "bot_class": "Assassin",
+      "health": 100,
+      "damage": 75,
+      "armor": 10,
+      "avatar_url": "https://example.com/avatar2.png"
+    }
+  ]
+}
+Run the json-server:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+bash
+Copy code
+npx json-server --watch db.json --port 3000
+This will start a mock API server at http://localhost:3000, serving the fitness data stored in db.json.
 
-### `npm run build`
+Run the React development server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+bash
+Copy code
+npm start
+This will start the React app on http://localhost:3001.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
+View Fitness Routines: After starting the app, you can see a list of fitness routines fetched from http://localhost:3000/fitness.
+Add New Routine: Fill out the form on the top to add a new fitness routine.
+Edit Routine: Click on the "Edit" button next to any routine to modify it. The form will pre-fill with the routine's current data.
+Delete Routine: Click on the "Delete" button next to any routine to remove it.
+Favorite Routine: Click on the "Save as Favorite" button to mark a routine as a favorite. It will show up with a special style indicating it is a favorite.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contributing
+We welcome contributions to this project! To contribute:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Fork the repository.
+Clone your forked repository to your local machine.
+Create a new branch for your changes.
+Make your changes.
+Commit and push your changes.
+Open a pull request with a clear description of your changes.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

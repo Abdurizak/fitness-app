@@ -3,7 +3,7 @@ import './FitnessPage.css';
 
 const FitnessPage = () => {
   const [fitnessData, setFitnessData] = useState([]);
-  const [favorites, setFavorites] = useState([]); // State to track favorite routines
+  const [favorites, setFavorites] = useState([]); 
   const [newBot, setNewBot] = useState({
     name: '',
     bot_class: '',
@@ -12,7 +12,7 @@ const FitnessPage = () => {
     armor: '',
     avatar_url: ''
   });
-  const [editingBot, setEditingBot] = useState(null); // State to track which bot is being edited
+  const [editingBot, setEditingBot] = useState(null); 
 
   // Fetch data from db.json
   useEffect(() => {
@@ -22,7 +22,7 @@ const FitnessPage = () => {
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
-  // Function to toggle favorite status
+  //Favorite status
   const toggleFavorite = (botId) => {
     setFavorites((prevFavorites) => {
       if (prevFavorites.includes(botId)) {
@@ -44,13 +44,13 @@ const FitnessPage = () => {
     }));
   };
 
-  // Function to handle adding a new fitness routine
+  // Adding a new fitness routine
   const addNewBot = (e) => {
     e.preventDefault();
 
     const newFitnessRoutine = {
       ...newBot,
-      id: Date.now(), // Generate a unique ID based on timestamp
+      id: Date.now(), 
     };
 
     setFitnessData((prevData) => [...prevData, newFitnessRoutine]);
@@ -66,7 +66,7 @@ const FitnessPage = () => {
     });
   };
 
-  // Function to handle editing a fitness routine
+  //Editing a fitness routine
   const handleEdit = (bot) => {
     setEditingBot(bot); // Set the bot to be edited
     setNewBot({
@@ -79,7 +79,7 @@ const FitnessPage = () => {
     });
   };
 
-  // Function to handle saving the edited fitness routine
+  //Saving the edited fitness routine
   const saveEditedBot = (e) => {
     e.preventDefault();
     setFitnessData((prevData) =>
@@ -100,7 +100,7 @@ const FitnessPage = () => {
     setEditingBot(null); // Reset editing state
   };
 
-  // Function to handle deleting a fitness routine
+  // Deleting a fitness routine
   const deleteFitnessRoutine = (botId) => {
     setFitnessData((prevData) => prevData.filter((bot) => bot.id !== botId));
   };
@@ -165,7 +165,7 @@ const FitnessPage = () => {
 
       <div className="fitness-list">
         {fitnessData.map((bot) => {
-          const isFavorite = favorites.includes(bot.id); // Check if the bot is a favorite
+          const isFavorite = favorites.includes(bot.id); 
           return (
             <div key={bot.id} className={`fitness-card ${isFavorite ? 'favorite' : ''}`}>
               <img src={bot.avatar_url} alt={bot.name} />

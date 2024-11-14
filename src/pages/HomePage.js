@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const HomePage = () => {
-  // State for the form inputs
+  
   const [routineName, setRoutineName] = useState('');
   const [exercise, setExercise] = useState('');
   const [duration, setDuration] = useState('');
