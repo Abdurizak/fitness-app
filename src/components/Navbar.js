@@ -15,9 +15,12 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/fitness">Fitness</Link>
             </li>
+<<<<<<< HEAD
             <li className="nav-item">
               <Link className="nav-link" to="/contact">Contact</Link>  {/* Link to Contact Page */}
             </li>
+=======
+>>>>>>> origin/master
           </ul>
         </div>
       </div>

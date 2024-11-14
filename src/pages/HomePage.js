@@ -69,7 +69,7 @@ const HomePage = () => {
     >
       <div className="content">
         <h1>FITFORMULA - Fitness Routines</h1>
-        <p>Manage your fitness routines below!</p>
+        <p>Manage your fitness routines below,</p>
 
         {/* Form for adding a new routine */}
         <form onSubmit={handleSubmit}>
