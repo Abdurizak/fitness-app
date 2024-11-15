@@ -94,7 +94,7 @@ Commit and push your changes.
 Open a pull request with a clear description of your changes.
 
 ## Live Server
-silver-mochi-cc1384.netlify.app
+https://silver-mochi-cc1384.netlify.app/
 
 
 ## License
