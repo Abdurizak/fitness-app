@@ -93,6 +93,10 @@ Make your changes.
 Commit and push your changes.
 Open a pull request with a clear description of your changes.
 
+## Live Server
+https://silver-mochi-cc1384.netlify.app/
+
+
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License. 
 
