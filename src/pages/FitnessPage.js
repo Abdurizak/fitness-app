@@ -12,9 +12,8 @@ const FitnessPage = () => {
     armor: '',
     avatar_url: ''
   });
-  const [editingBot, setEditingBot] = useState(null); 
+  const [editingBot, setEditingBot] = useState(null);
 
-  // Fetch data from db.json
   useEffect(() => {
     fetch('https://fitness-app-vdmr.onrender.com/fitness')
       .then((response) => response.json())
@@ -22,7 +21,6 @@ const FitnessPage = () => {
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
-  //Favorite status
   const toggleFavorite = (botId) => {
     setFavorites((prevFavorites) => {
       if (prevFavorites.includes(botId)) {
@@ -33,7 +31,6 @@ const FitnessPage = () => {
     });
   };
 
-  // Handle input changes for new or editing bot
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewBot((prev) => ({
@@ -42,11 +39,9 @@ const FitnessPage = () => {
     }));
   };
 
-  // Adding a new fitness routine with validation
   const addNewBot = (e) => {
     e.preventDefault();
 
-    // Validate health, damage, and armor values before adding
     if (newBot.health < 0 || newBot.health > 100) {
       alert("Health must be between 0 and 100.");
       return;
@@ -62,12 +57,11 @@ const FitnessPage = () => {
 
     const newFitnessRoutine = {
       ...newBot,
-      id: Date.now(), 
+      id: Date.now(),
     };
 
     setFitnessData((prevData) => [...prevData, newFitnessRoutine]);
 
-    // Clear form after adding
     setNewBot({
       name: '',
       bot_class: '',
@@ -78,7 +72,6 @@ const FitnessPage = () => {
     });
   };
 
-  // Editing a fitness routine
   const handleEdit = (bot) => {
     setEditingBot(bot); 
     setNewBot({
@@ -91,7 +84,6 @@ const FitnessPage = () => {
     });
   };
 
-  // Saving the edited fitness routine
   const saveEditedBot = (e) => {
     e.preventDefault();
 
@@ -125,7 +117,6 @@ const FitnessPage = () => {
     setEditingBot(null);
   };
 
-  // Deleting a fitness routine
   const deleteFitnessRoutine = (botId) => {
     const confirmed = window.confirm("Are you sure you want to delete this fitness routine?");
     if (confirmed) {
@@ -137,7 +128,6 @@ const FitnessPage = () => {
     <div>
       <h1>Fitness Bots <span className="favorite-count">Favorites: {favorites.length}</span></h1>
 
-      {/* Form to add or edit a fitness routine */}
       <form onSubmit={editingBot ? saveEditedBot : addNewBot} className="add-bot-form">
         <h2>{editingBot ? 'Edit Fitness Routine' : 'Add New Fitness Routine'}</h2>
         <input
@@ -148,14 +138,20 @@ const FitnessPage = () => {
           onChange={handleInputChange}
           required
         />
-        <input
-          type="text"
+        <select
           name="bot_class"
-          placeholder="Class"
           value={newBot.bot_class}
           onChange={handleInputChange}
           required
-        />
+        >
+          <option value="">Select Class</option>
+          <option value="Strength">Strength</option>
+          <option value="Cardio">Cardio</option>
+          <option value="Flexibility/Mobility">Flexibility/Mobility</option>
+          <option value="Endurance">Endurance</option>
+          <option value="Balance/Recovery">Balance/Recovery</option>
+          <option value="Mind-Body">Mind-Body</option>
+        </select>
         <input
           type="number"
           name="health"
