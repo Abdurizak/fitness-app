@@ -26,10 +26,8 @@ const FitnessPage = () => {
   const toggleFavorite = (botId) => {
     setFavorites((prevFavorites) => {
       if (prevFavorites.includes(botId)) {
-        // Remove from favorites
         return prevFavorites.filter((id) => id !== botId);
       } else {
-        // Add to favorites
         return [...prevFavorites, botId];
       }
     });
@@ -44,9 +42,23 @@ const FitnessPage = () => {
     }));
   };
 
-  // Adding a new fitness routine
+  // Adding a new fitness routine with validation
   const addNewBot = (e) => {
     e.preventDefault();
+
+    // Validate health, damage, and armor values before adding
+    if (newBot.health < 0 || newBot.health > 100) {
+      alert("Health must be between 0 and 100.");
+      return;
+    }
+    if (newBot.damage < 0 || newBot.damage > 10) {
+      alert("Damage must be between 0 and 10.");
+      return;
+    }
+    if (newBot.armor < 0 || newBot.armor > 5) {
+      alert("Armor must be between 0 and 5.");
+      return;
+    }
 
     const newFitnessRoutine = {
       ...newBot,
@@ -66,9 +78,9 @@ const FitnessPage = () => {
     });
   };
 
-  //Editing a fitness routine
+  // Editing a fitness routine
   const handleEdit = (bot) => {
-    setEditingBot(bot); // Set the bot to be edited
+    setEditingBot(bot); 
     setNewBot({
       name: bot.name,
       bot_class: bot.bot_class,
@@ -79,16 +91,29 @@ const FitnessPage = () => {
     });
   };
 
-  //Saving the edited fitness routine
+  // Saving the edited fitness routine
   const saveEditedBot = (e) => {
     e.preventDefault();
+
+    if (newBot.health < 0 || newBot.health > 100) {
+      alert("Health must be between 0 and 100.");
+      return;
+    }
+    if (newBot.damage < 0 || newBot.damage > 10) {
+      alert("Damage must be between 0 and 10.");
+      return;
+    }
+    if (newBot.armor < 0 || newBot.armor > 5) {
+      alert("Armor must be between 0 and 5.");
+      return;
+    }
+
     setFitnessData((prevData) =>
       prevData.map((bot) =>
         bot.id === editingBot.id ? { ...bot, ...newBot } : bot
       )
     );
 
-    // Clear form after saving
     setNewBot({
       name: '',
       bot_class: '',
@@ -97,17 +122,20 @@ const FitnessPage = () => {
       armor: '',
       avatar_url: ''
     });
-    setEditingBot(null); // Reset editing state
+    setEditingBot(null);
   };
 
   // Deleting a fitness routine
   const deleteFitnessRoutine = (botId) => {
-    setFitnessData((prevData) => prevData.filter((bot) => bot.id !== botId));
+    const confirmed = window.confirm("Are you sure you want to delete this fitness routine?");
+    if (confirmed) {
+      setFitnessData((prevData) => prevData.filter((bot) => bot.id !== botId));
+    }
   };
 
   return (
     <div>
-      <h1>Fitness Bots</h1>
+      <h1>Fitness Bots <span className="favorite-count">Favorites: {favorites.length}</span></h1>
 
       {/* Form to add or edit a fitness routine */}
       <form onSubmit={editingBot ? saveEditedBot : addNewBot} className="add-bot-form">
@@ -134,6 +162,8 @@ const FitnessPage = () => {
           placeholder="Health"
           value={newBot.health}
           onChange={handleInputChange}
+          min="0"
+          max="100"
           required
         />
         <input
@@ -142,6 +172,8 @@ const FitnessPage = () => {
           placeholder="Damage"
           value={newBot.damage}
           onChange={handleInputChange}
+          min="0"
+          max="10"
           required
         />
         <input
@@ -150,6 +182,8 @@ const FitnessPage = () => {
           placeholder="Armor"
           value={newBot.armor}
           onChange={handleInputChange}
+          min="0"
+          max="5"
           required
         />
         <input
@@ -161,40 +195,45 @@ const FitnessPage = () => {
           required
         />
         <button type="submit">{editingBot ? 'Save Changes' : 'Add Fitness Routine'}</button>
+        {editingBot && <button type="button" onClick={() => setEditingBot(null)}>Cancel Edit</button>}
       </form>
 
       <div className="fitness-list">
-        {fitnessData.map((bot) => {
-          const isFavorite = favorites.includes(bot.id); 
-          return (
-            <div key={bot.id} className={`fitness-card ${isFavorite ? 'favorite' : ''}`}>
-              <img src={bot.avatar_url} alt={bot.name} />
-              <h2>{bot.name}</h2>
-              <p><strong>Class:</strong> {bot.bot_class}</p>
-              <p><strong>Health:</strong> {bot.health}</p>
-              <p><strong>Damage:</strong> {bot.damage}</p>
-              <p><strong>Armor:</strong> {bot.armor}</p>
-              <button
-                className={`favorite-btn ${isFavorite ? 'favorited' : ''}`}
-                onClick={() => toggleFavorite(bot.id)}
-              >
-                {isFavorite ? 'Remove from Favorites' : 'Save as Favorite'}
-              </button>
-              <button 
-                className="edit-btn"
-                onClick={() => handleEdit(bot)}
-              >
-                Edit
-              </button>
-              <button 
-                className="delete-btn"
-                onClick={() => deleteFitnessRoutine(bot.id)}
-              >
-                Delete
-              </button>
-            </div>
-          );
-        })}
+        {fitnessData.length === 0 ? (
+          <p>No fitness routines available. Add a new one!</p>
+        ) : (
+          fitnessData.map((bot) => {
+            const isFavorite = favorites.includes(bot.id); 
+            return (
+              <div key={bot.id} className={`fitness-card ${isFavorite ? 'favorite' : ''}`}>
+                <img src={bot.avatar_url} alt={bot.name} />
+                <h2>{bot.name}</h2>
+                <p><strong>Class:</strong> {bot.bot_class}</p>
+                <p><strong>Health:</strong> {bot.health}</p>
+                <p><strong>Damage:</strong> {bot.damage}</p>
+                <p><strong>Armor:</strong> {bot.armor}</p>
+                <button
+                  className={`favorite-btn ${isFavorite ? 'favorited' : ''}`}
+                  onClick={() => toggleFavorite(bot.id)}
+                >
+                  {isFavorite ? 'Remove from Favorites' : 'Save as Favorite'}
+                </button>
+                <button 
+                  className="edit-btn"
+                  onClick={() => handleEdit(bot)}
+                >
+                  Edit
+                </button>
+                <button 
+                  className="delete-btn"
+                  onClick={() => deleteFitnessRoutine(bot.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );
